@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblical Family Tree</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Biblical Genealogy</h1>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search lineage..." oninput="handleSearch(this.value)">
+                <div id="search-results"></div>
+            </div>
+        </header>
+
+        <div id="tree-container"></div>
+
+        <div class="zoom-controls">
+            <button onclick="handleZoom('in')" title="Zoom In">+</button>
+            <button onclick="handleZoom('out')" title="Zoom Out">−</button>
+            <button onclick="handleZoom('reset')" title="Reset View">⟲</button>
+        </div>
+
+        <div id="sidebar">
+            <span class="close-btn" onclick="closeSidebar()">&times;</span>
+            <div id="sidebar-content">
+                <!-- Details go here -->
+            </div>
+        </div>
+    </div>
+    <script src="data_expansion.js"></script>
+    <script src="data_table_of_nations.js"></script>
+    <script src="data_tribes_judges.js"></script>
+    <script src="data_prophets.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
