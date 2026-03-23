@@ -1,4 +1,3 @@
-
 // --- Data Section ---
 
 const adamToNoah = [
@@ -490,7 +489,7 @@ function update(source) {
     nodeEnter.append('circle')
         .attr('class', 'node')
         .attr('r', 10)
-        .style("fill", d => d._children ? "#d4af37" : "#fff")
+        .style("fill", d => d._children ? "#c9a84c" : "#1a1208")
         .style("stroke", d => getNodeColor(d));
 
     // Add labels for the nodes
@@ -514,7 +513,7 @@ function update(source) {
     // Update the node attributes and style
     nodeUpdate.select('circle.node')
         .attr('r', d => d.data.id === 'ROOT' ? 15 : 10) // Bigger root
-        .style("fill", d => d._children ? "#d4af37" : "#fff")
+        .style("fill", d => d._children ? "#c9a84c" : "#1a1208")
         .attr('cursor', 'pointer');
 
     // Remove any exiting nodes
@@ -594,7 +593,7 @@ function click(event, d) {
     if (d.data.id !== 'ROOT') showInfo(d.data);
 
     d3.selectAll("circle").style("stroke-width", "2px").style("stroke", d => getNodeColor(d));
-    d3.select(event.currentTarget).select("circle").style("stroke", "#d4af37").style("stroke-width", "4px");
+    d3.select(event.currentTarget).select("circle").style("stroke", "#c9a84c").style("stroke-width", "4px");
 }
 
 function showInfo(data) {
@@ -649,7 +648,7 @@ function traceLineage(id) {
             .select("circle")
             .style("opacity", 1)
             .style("fill", "#fff")
-            .style("stroke", "#d4af37");
+            .style("stroke", "#c9a84c");
 
         d3.selectAll(".node").filter(n => n.data.id === d.data.id)
             .select("text")
@@ -824,7 +823,7 @@ function zoomTo(id) {
     // We'll rely on the update function's click handler styling or just manually finding:
     // But since we don't have DOM ref easily without a select loop:
     g.selectAll(".node").filter(d => d.data.id === id).select("circle")
-        .style("stroke", "#d4af37").style("stroke-width", "4px");
+        .style("stroke", "#c9a84c").style("stroke-width", "4px");
 }
 
 
@@ -835,13 +834,13 @@ function getNodeColor(d) {
     const cat = d.data.attributes.category || '';
     const title = d.data.attributes.title || '';
 
-    if (cat.includes('King') || title.includes('King') || title.includes('Queen')) return '#d4af37'; // Gold
+    if (cat.includes('King') || title.includes('King') || title.includes('Queen')) return '#c9a84c'; // Gold
     if (cat.includes('Judge')) return '#8b4513'; // SaddleBrown
     if (cat.includes('Prophet') || title.includes('Prophet')) return '#800080'; // Purple
     if (cat.includes('Priest') || title.includes('Priest')) return '#0000ff'; // Blue
     if (cat.includes('Tribe')) return '#228b22'; // ForestGreen
 
-    return d.data.attributes.gender === 'male' ? "#1e40af" : "#be185d";
+    return d.data.attributes.gender === 'male' ? "#4a7fc1" : "#c15a8a";
 }
 
 let activeFilter = null; // Single filter for simplicity, or Set for multi
@@ -896,7 +895,7 @@ function updateLegendUI() {
 
 function createLegend() {
     const legendData = [
-        { label: 'King/Queen', color: '#d4af37' },
+        { label: 'King/Queen', color: '#c9a84c' },
         { label: 'Judge', color: '#8b4513' },
         { label: 'Prophet', color: '#800080' },
         { label: 'Priest', color: '#0000ff' },
